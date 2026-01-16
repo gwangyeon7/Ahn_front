@@ -1,86 +1,222 @@
-.dashboard-container {
-  background-color: #1a1a1a;
-  color: white;
-  min-height: 100vh;
-  padding: 40px;
-  font-family: "Inter", sans-serif;
-}
-header {
-  text-align: center;
-  margin-bottom: 50px;
-}
-.main-btn {
-  background: linear-gradient(135deg, #6e8efb, #a777e3);
-  border: none;
-  padding: 15px 30px;
-  color: white;
-  border-radius: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 1.1em;
-}
-.main-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(110, 142, 251, 0.4);
+/* 1. 친구가 만든 화이트 톤 대시보드 기본 변수 설정 */
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --line: rgba(15, 23, 42, 0.1);
+
+  --accent: #2f80ed; /* blue */
+  --accent2: #f2994a; /* orange */
+  --accent3: #eb5757; /* red */
 }
 
-/* 페이드인 애니메이션 */
-.content-fade-in {
-  animation: fadeIn 0.8s ease-in-out;
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+* {
+  box-sizing: border-box;
 }
 
-.chart-section {
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* 2. 공통 페이지 레이아웃 */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 18px 32px;
+}
+
+.topbar {
   display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 18px;
 }
-.chart-box {
-  background: #2d2d2d;
-  padding: 20px;
-  border-radius: 15px;
-  width: 400px;
-  text-align: center;
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.linkBtn {
+  background: transparent;
+  border: 0;
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 600;
+}
+.divider {
+  width: 1px;
+  height: 18px;
+  background: var(--line);
+}
+.pageTitle {
+  font-weight: 700;
 }
 
-.modern-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #2d2d2d;
-  border-radius: 10px;
+.userBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+}
+.userName {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.headerRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.h1 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+
+.primaryBtn {
+  background: var(--accent);
+  color: white;
+  border: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(47, 128, 237, 0.2);
+}
+
+/* 3. 리더님의 DB 테이블 전용 스타일 (친구 디자인에 맞춰 색상 조정) */
+.tableCard {
+  margin-top: 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
   overflow: hidden;
-}
-.modern-table th {
-  background: #3d3d3d;
-  padding: 15px;
-  color: #aaa;
-}
-.modern-table td {
-  padding: 15px;
-  border-bottom: 1px solid #3d3d3d;
-  text-align: center;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
 }
 
-.status-tag {
-  padding: 5px 12px;
-  border-radius: 6px;
-  font-size: 0.85em;
+.tableHead,
+.tableRow {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px 120px 200px; /* 테이블 비율 조정 */
+  gap: 10px;
+  align-items: center;
+  padding: 15px;
 }
-.status-tag.안전 {
-  background: rgba(0, 196, 159, 0.2);
-  color: #00c49f;
+
+.tableHead {
+  background: rgba(15, 23, 42, 0.03);
+  font-weight: 900;
+  font-size: 12px;
+  color: var(--muted);
 }
-.status-tag.위험 {
-  background: rgba(255, 128, 66, 0.2);
-  color: #ff8042;
+
+.tableRow {
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  transition: 0.2s;
+}
+.tableRow:hover {
+  background-color: #f9fafb;
+}
+
+/* 4. 친구가 만든 차트 및 상태 뱃지 스타일 */
+.grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 14px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+}
+.colRight {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.chartRow {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 12px;
+}
+.chartBox {
+  height: 240px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 11px;
+}
+.badge-warn {
+  background: rgba(242, 153, 74, 0.14);
+  color: #b45309;
+}
+.badge-danger {
+  background: rgba(235, 87, 87, 0.14);
+  color: #b91c1c;
+}
+.badge-neutral {
+  background: rgba(148, 163, 184, 0.18);
+  color: #334155;
+}
+
+/* 5. 친구의 링 차트 스타일 */
+.ringStack {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+}
+.ring {
+  transform: rotate(-90deg);
+}
+.ringTrack {
+  fill: none;
+  stroke: rgba(15, 23, 42, 0.1);
+  stroke-width: 10;
+}
+.ringValue {
+  fill: none;
+  stroke: var(--accent2);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+.ringCenter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ringScore {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* 반응형 */
+@media (max-width: 980px) {
+  .grid,
+  .chartRow {
+    grid-template-columns: 1fr;
+  }
 }

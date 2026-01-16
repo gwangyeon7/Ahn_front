@@ -1,5 +1,6 @@
 import json
 import os
+import requests
 
 def process_security_data():
     base_path = "." # syft와 grype로 생성한 파일이 있는 경로
@@ -49,6 +50,22 @@ def process_security_data():
     print(f"🚀 백엔드 전송용 데이터 가공 완료: {output_path}")
     return processed_report
 
-if __name__ == "__main__":
-    process_security_data()
     
+# 백엔드로 전송
+def send_to_backend(report_data):
+    # 백엔드 API 주소
+    back_url = ""
+    
+    try:
+        # response = requests.post(back_url, json=report_data)
+        # print(f'전송 상태 코드: {response.status_code}')
+        print('백엔드 전송 함수가 호출됨')
+    except Exception as e:
+        print(f"❌ 백엔드 전송 중 오류 발생: {e}")
+        
+
+# 실행
+if __name__ == "__main__":
+    report_data = process_security_data()
+    if report_data:
+        send_to_backend(report_data)

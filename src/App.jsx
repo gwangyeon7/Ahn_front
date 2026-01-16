@@ -1,22 +1,13 @@
-export default function App() {
-  return (
-    <div style={{ padding: 40, fontFamily: "Arial" }}>
-      <h1>Ahn_front React 예시 화면</h1>
-      <p>이 화면이 보이면 React + Vite + GitHub 연결 정상</p>
+// 1. 경로에서 ./src/를 빼고, 파일명 frontDashboard를 정확히 입력합니다.
+import FrontDashboard from './components/frontDashboard.jsx'; 
 
-      <div
-        style={{
-          marginTop: 20,
-          padding: 20,
-          border: "1px solid #ddd",
-          borderRadius: 8,
-          maxWidth: 400,
-        }}
-      >
-        <h2>테스트 카드</h2>
-        <p>현재 시간:</p>
-        <strong>{new Date().toLocaleString()}</strong>
-      </div>
+function App() {
+  return (
+    <div className="App">
+      {/* 2. 위에서 import한 이름인 'FrontDashboard'를 태그로 사용합니다. */}
+      <FrontDashboard />
     </div>
   );
 }
+
+export default App;

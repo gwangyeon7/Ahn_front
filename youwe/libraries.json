@@ -1,1 +1,487 @@
-{"artifacts":[{"id":"63f75f8ec974948e","name":"ahn-front-app","version":"0.0.0","type":"npm","foundBy":"javascript-lock-cataloger","locations":[{"path":"\\package-lock.json","accessPath":"\\package-lock.json","annotations":{"evidence":"primary"}}],"licenses":[],"language":"javascript","cpes":[{"cpe":"cpe:2.3:a:ahn-front-app:ahn-front-app:0.0.0:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:ahn-front-app:ahn_front_app:0.0.0:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:ahn_front_app:ahn-front-app:0.0.0:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:ahn_front_app:ahn_front_app:0.0.0:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:ahn-front:ahn-front-app:0.0.0:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:ahn-front:ahn_front_app:0.0.0:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:ahn_front:ahn-front-app:0.0.0:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:ahn_front:ahn_front_app:0.0.0:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:ahn:ahn-front-app:0.0.0:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:ahn:ahn_front_app:0.0.0:*:*:*:*:*:*:*","source":"syft-generated"}],"purl":"pkg:npm/ahn-front-app@0.0.0","metadataType":"javascript-npm-package-lock-entry","metadata":{"resolved":"","integrity":"","dependencies":{"react":"^19.2.0","react-dom":"^19.2.0"}}},{"id":"fe4896187fca7405","name":"react","version":"19.2.3","type":"npm","foundBy":"javascript-lock-cataloger","locations":[{"path":"\\package-lock.json","accessPath":"\\package-lock.json","annotations":{"evidence":"primary"}}],"licenses":[{"value":"MIT","spdxExpression":"MIT","type":"declared","urls":[],"locations":[{"path":"\\package-lock.json","accessPath":"\\package-lock.json","annotations":{"evidence":"primary"}}]}],"language":"javascript","cpes":[{"cpe":"cpe:2.3:a:react:react:19.2.3:*:*:*:*:*:*:*","source":"syft-generated"}],"purl":"pkg:npm/react@19.2.3","metadataType":"javascript-npm-package-lock-entry","metadata":{"resolved":"https://registry.npmjs.org/react/-/react-19.2.3.tgz","integrity":"sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==","dependencies":null}},{"id":"e5892676ab7f92aa","name":"react-dom","version":"19.2.3","type":"npm","foundBy":"javascript-lock-cataloger","locations":[{"path":"\\package-lock.json","accessPath":"\\package-lock.json","annotations":{"evidence":"primary"}}],"licenses":[{"value":"MIT","spdxExpression":"MIT","type":"declared","urls":[],"locations":[{"path":"\\package-lock.json","accessPath":"\\package-lock.json","annotations":{"evidence":"primary"}}]}],"language":"javascript","cpes":[{"cpe":"cpe:2.3:a:react-dom:react-dom:19.2.3:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:react-dom:react_dom:19.2.3:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:react_dom:react-dom:19.2.3:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:react_dom:react_dom:19.2.3:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:react:react-dom:19.2.3:*:*:*:*:*:*:*","source":"syft-generated"},{"cpe":"cpe:2.3:a:react:react_dom:19.2.3:*:*:*:*:*:*:*","source":"syft-generated"}],"purl":"pkg:npm/react-dom@19.2.3","metadataType":"javascript-npm-package-lock-entry","metadata":{"resolved":"https://registry.npmjs.org/react-dom/-/react-dom-19.2.3.tgz","integrity":"sha512-yELu4WmLPw5Mr/lmeEpox5rw3RETacE++JgHqQzd2dg+YbJuat3jH4ingc+WPZhxaoFzdv9y33G+F7Nl5O0GBg==","dependencies":{"scheduler":"^0.27.0"}}},{"id":"6b4e2e70cc3e4cd0","name":"scheduler","version":"0.27.0","type":"npm","foundBy":"javascript-lock-cataloger","locations":[{"path":"\\package-lock.json","accessPath":"\\package-lock.json","annotations":{"evidence":"primary"}}],"licenses":[{"value":"MIT","spdxExpression":"MIT","type":"declared","urls":[],"locations":[{"path":"\\package-lock.json","accessPath":"\\package-lock.json","annotations":{"evidence":"primary"}}]}],"language":"javascript","cpes":[{"cpe":"cpe:2.3:a:scheduler:scheduler:0.27.0:*:*:*:*:*:*:*","source":"syft-generated"}],"purl":"pkg:npm/scheduler@0.27.0","metadataType":"javascript-npm-package-lock-entry","metadata":{"resolved":"https://registry.npmjs.org/scheduler/-/scheduler-0.27.0.tgz","integrity":"sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==","dependencies":null}}],"artifactRelationships":[{"parent":"63f75f8ec974948e","child":"1b2b37f4aaeb40d1","type":"evident-by","metadata":{"kind":"primary"}},{"parent":"6b4e2e70cc3e4cd0","child":"1b2b37f4aaeb40d1","type":"evident-by","metadata":{"kind":"primary"}},{"parent":"6b4e2e70cc3e4cd0","child":"e5892676ab7f92aa","type":"dependency-of"},{"parent":"cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8","child":"63f75f8ec974948e","type":"contains"},{"parent":"cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8","child":"6b4e2e70cc3e4cd0","type":"contains"},{"parent":"cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8","child":"e5892676ab7f92aa","type":"contains"},{"parent":"cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8","child":"fe4896187fca7405","type":"contains"},{"parent":"e5892676ab7f92aa","child":"1b2b37f4aaeb40d1","type":"evident-by","metadata":{"kind":"primary"}},{"parent":"e5892676ab7f92aa","child":"63f75f8ec974948e","type":"dependency-of"},{"parent":"fe4896187fca7405","child":"1b2b37f4aaeb40d1","type":"evident-by","metadata":{"kind":"primary"}},{"parent":"fe4896187fca7405","child":"63f75f8ec974948e","type":"dependency-of"}],"files":[{"id":"1b2b37f4aaeb40d1","location":{"path":"\\package-lock.json"}}],"source":{"id":"cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8","name":".","version":"","type":"directory","metadata":{"path":"."}},"distro":{},"descriptor":{"name":"syft","version":"1.40.1","configuration":{"catalogers":{"requested":{"default":["directory","file"]},"used":["alpm-db-cataloger","apk-db-cataloger","binary-classifier-cataloger","cargo-auditable-binary-cataloger","cocoapods-cataloger","conan-cataloger","conda-meta-cataloger","dart-pubspec-cataloger","dart-pubspec-lock-cataloger","deb-archive-cataloger","dotnet-deps-binary-cataloger","dotnet-packages-lock-cataloger","dpkg-db-cataloger","elf-binary-package-cataloger","elixir-mix-lock-cataloger","erlang-otp-application-cataloger","erlang-rebar-lock-cataloger","file-content-cataloger","file-digest-cataloger","file-executable-cataloger","file-metadata-cataloger","gguf-cataloger","github-action-workflow-usage-cataloger","github-actions-usage-cataloger","go-module-binary-cataloger","go-module-file-cataloger","graalvm-native-image-cataloger","haskell-cataloger","homebrew-cataloger","java-archive-cataloger","java-gradle-lockfile-cataloger","java-jvm-cataloger","java-pom-cataloger","javascript-lock-cataloger","linux-kernel-cataloger","lua-rock-cataloger","nix-cataloger","opam-cataloger","pe-binary-package-cataloger","php-composer-lock-cataloger","php-interpreter-cataloger","php-pear-serialized-cataloger","portage-cataloger","python-installed-package-cataloger","python-package-cataloger","r-package-cataloger","rpm-archive-cataloger","rpm-db-cataloger","ruby-gemfile-cataloger","ruby-gemspec-cataloger","rust-cargo-lock-cataloger","snap-cataloger","swift-package-manager-cataloger","swipl-pack-cataloger","terraform-lock-cataloger","wordpress-plugins-cataloger"]},"data-generation":{"generate-cpes":true},"files":{"content":{"globs":null,"skip-files-above-size":0},"hashers":["sha-1","sha-256"],"selection":"owned-by-package"},"licenses":{"coverage":75,"include-content":"none"},"packages":{"binary":["python-binary","python-binary-lib","pypy-binary-lib","go-binary","julia-binary","helm","redis-binary","valkey-binary","nodejs-binary","go-binary-hint","busybox-binary","util-linux-binary","haproxy-binary","perl-binary","php-composer-binary","httpd-binary","memcached-binary","traefik-binary","arangodb-binary","postgresql-binary","mysql-binary","mysql-binary","mysql-binary","xtrabackup-binary","mariadb-binary","rust-standard-library-linux","rust-standard-library-macos","ruby-binary","erlang-binary","erlang-alpine-binary","erlang-library","swipl-binary","dart-binary","haskell-ghc-binary","haskell-cabal-binary","haskell-stack-binary","consul-binary","hashicorp-vault-binary","nginx-binary","bash-binary","openssl-binary","gcc-binary","fluent-bit-binary","wordpress-cli-binary","curl-binary","lighttpd-binary","proftpd-binary","zstd-binary","xz-binary","gzip-binary","sqlcipher-binary","jq-binary","chrome-binary","ffmpeg-binary","ffmpeg-library","ffmpeg-library","elixir-binary","elixir-library","istio-binary","istio-binary","grafana-binary","grafana-binary","envoy-binary","mongodb-binary","java-binary","java-jdb-binary"],"dotnet":{"dep-packages-must-claim-dll":true,"dep-packages-must-have-dll":false,"exclude-project-references":true,"propagate-dll-claims-to-parents":true,"relax-dll-claims-when-bundling-detected":true},"golang":{"local-mod-cache-dir":"C:\\Users\\Jeon Youwe\\go\\pkg\\mod","local-vendor-dir":"","main-module-version":{"from-build-settings":true,"from-contents":false,"from-ld-flags":true},"proxies":["https://proxy.golang.org","direct"],"search-local-mod-cache-licenses":false,"search-local-vendor-licenses":false,"search-remote-licenses":false,"use-packages-lib":true},"java-archive":{"include-indexed-archives":true,"include-unindexed-archives":false,"maven-base-url":"https://repo1.maven.org/maven2","maven-localrepository-dir":"C:\\Users\\Jeon Youwe\\.m2\\repository","max-parent-recursive-depth":0,"resolve-transitive-dependencies":false,"use-maven-localrepository":false,"use-network":false},"javascript":{"include-dev-dependencies":false,"npm-base-url":"https://registry.npmjs.org","search-remote-licenses":false},"linux-kernel":{"catalog-modules":true},"nix":{"capture-owned-files":false},"python":{"guess-unpinned-requirements":false,"pypi-base-url":"https://pypi.org/pypi","search-remote-licenses":false}},"relationships":{"exclude-binary-packages-with-file-ownership-overlap":true,"package-file-ownership":true,"package-file-ownership-overlap":true},"search":{"scope":"squashed"}}},"schema":{"version":"16.1.2","url":"https://raw.githubusercontent.com/anchore/syft/main/schema/json/schema-16.1.2.json"}}
+{
+  "artifacts": [
+    {
+      "id": "63f75f8ec974948e",
+      "name": "ahn-front-app",
+      "version": "0.0.0",
+      "type": "npm",
+      "foundBy": "javascript-lock-cataloger",
+      "locations": [
+        {
+          "path": "\\package-lock.json",
+          "accessPath": "\\package-lock.json",
+          "annotations": { "evidence": "primary" }
+        }
+      ],
+      "licenses": [],
+      "language": "javascript",
+      "cpes": [
+        {
+          "cpe": "cpe:2.3:a:ahn-front-app:ahn-front-app:0.0.0:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:ahn-front-app:ahn_front_app:0.0.0:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:ahn_front_app:ahn-front-app:0.0.0:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:ahn_front_app:ahn_front_app:0.0.0:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:ahn-front:ahn-front-app:0.0.0:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:ahn-front:ahn_front_app:0.0.0:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:ahn_front:ahn-front-app:0.0.0:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:ahn_front:ahn_front_app:0.0.0:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:ahn:ahn-front-app:0.0.0:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:ahn:ahn_front_app:0.0.0:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        }
+      ],
+      "purl": "pkg:npm/ahn-front-app@0.0.0",
+      "metadataType": "javascript-npm-package-lock-entry",
+      "metadata": {
+        "resolved": "",
+        "integrity": "",
+        "dependencies": { "react": "^19.2.0", "react-dom": "^19.2.0" }
+      }
+    },
+    {
+      "id": "fe4896187fca7405",
+      "name": "react",
+      "version": "19.2.3",
+      "type": "npm",
+      "foundBy": "javascript-lock-cataloger",
+      "locations": [
+        {
+          "path": "\\package-lock.json",
+          "accessPath": "\\package-lock.json",
+          "annotations": { "evidence": "primary" }
+        }
+      ],
+      "licenses": [
+        {
+          "value": "MIT",
+          "spdxExpression": "MIT",
+          "type": "declared",
+          "urls": [],
+          "locations": [
+            {
+              "path": "\\package-lock.json",
+              "accessPath": "\\package-lock.json",
+              "annotations": { "evidence": "primary" }
+            }
+          ]
+        }
+      ],
+      "language": "javascript",
+      "cpes": [
+        {
+          "cpe": "cpe:2.3:a:react:react:19.2.3:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        }
+      ],
+      "purl": "pkg:npm/react@19.2.3",
+      "metadataType": "javascript-npm-package-lock-entry",
+      "metadata": {
+        "resolved": "https://registry.npmjs.org/react/-/react-19.2.3.tgz",
+        "integrity": "sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==",
+        "dependencies": null
+      }
+    },
+    {
+      "id": "e5892676ab7f92aa",
+      "name": "react-dom",
+      "version": "19.2.3",
+      "type": "npm",
+      "foundBy": "javascript-lock-cataloger",
+      "locations": [
+        {
+          "path": "\\package-lock.json",
+          "accessPath": "\\package-lock.json",
+          "annotations": { "evidence": "primary" }
+        }
+      ],
+      "licenses": [
+        {
+          "value": "MIT",
+          "spdxExpression": "MIT",
+          "type": "declared",
+          "urls": [],
+          "locations": [
+            {
+              "path": "\\package-lock.json",
+              "accessPath": "\\package-lock.json",
+              "annotations": { "evidence": "primary" }
+            }
+          ]
+        }
+      ],
+      "language": "javascript",
+      "cpes": [
+        {
+          "cpe": "cpe:2.3:a:react-dom:react-dom:19.2.3:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:react-dom:react_dom:19.2.3:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:react_dom:react-dom:19.2.3:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:react_dom:react_dom:19.2.3:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:react:react-dom:19.2.3:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        },
+        {
+          "cpe": "cpe:2.3:a:react:react_dom:19.2.3:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        }
+      ],
+      "purl": "pkg:npm/react-dom@19.2.3",
+      "metadataType": "javascript-npm-package-lock-entry",
+      "metadata": {
+        "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-19.2.3.tgz",
+        "integrity": "sha512-yELu4WmLPw5Mr/lmeEpox5rw3RETacE++JgHqQzd2dg+YbJuat3jH4ingc+WPZhxaoFzdv9y33G+F7Nl5O0GBg==",
+        "dependencies": { "scheduler": "^0.27.0" }
+      }
+    },
+    {
+      "id": "6b4e2e70cc3e4cd0",
+      "name": "scheduler",
+      "version": "0.27.0",
+      "type": "npm",
+      "foundBy": "javascript-lock-cataloger",
+      "locations": [
+        {
+          "path": "\\package-lock.json",
+          "accessPath": "\\package-lock.json",
+          "annotations": { "evidence": "primary" }
+        }
+      ],
+      "licenses": [
+        {
+          "value": "MIT",
+          "spdxExpression": "MIT",
+          "type": "declared",
+          "urls": [],
+          "locations": [
+            {
+              "path": "\\package-lock.json",
+              "accessPath": "\\package-lock.json",
+              "annotations": { "evidence": "primary" }
+            }
+          ]
+        }
+      ],
+      "language": "javascript",
+      "cpes": [
+        {
+          "cpe": "cpe:2.3:a:scheduler:scheduler:0.27.0:*:*:*:*:*:*:*",
+          "source": "syft-generated"
+        }
+      ],
+      "purl": "pkg:npm/scheduler@0.27.0",
+      "metadataType": "javascript-npm-package-lock-entry",
+      "metadata": {
+        "resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.27.0.tgz",
+        "integrity": "sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==",
+        "dependencies": null
+      }
+    }
+  ],
+  "artifactRelationships": [
+    {
+      "parent": "63f75f8ec974948e",
+      "child": "1b2b37f4aaeb40d1",
+      "type": "evident-by",
+      "metadata": { "kind": "primary" }
+    },
+    {
+      "parent": "6b4e2e70cc3e4cd0",
+      "child": "1b2b37f4aaeb40d1",
+      "type": "evident-by",
+      "metadata": { "kind": "primary" }
+    },
+    {
+      "parent": "6b4e2e70cc3e4cd0",
+      "child": "e5892676ab7f92aa",
+      "type": "dependency-of"
+    },
+    {
+      "parent": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "child": "63f75f8ec974948e",
+      "type": "contains"
+    },
+    {
+      "parent": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "child": "6b4e2e70cc3e4cd0",
+      "type": "contains"
+    },
+    {
+      "parent": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "child": "e5892676ab7f92aa",
+      "type": "contains"
+    },
+    {
+      "parent": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "child": "fe4896187fca7405",
+      "type": "contains"
+    },
+    {
+      "parent": "e5892676ab7f92aa",
+      "child": "1b2b37f4aaeb40d1",
+      "type": "evident-by",
+      "metadata": { "kind": "primary" }
+    },
+    {
+      "parent": "e5892676ab7f92aa",
+      "child": "63f75f8ec974948e",
+      "type": "dependency-of"
+    },
+    {
+      "parent": "fe4896187fca7405",
+      "child": "1b2b37f4aaeb40d1",
+      "type": "evident-by",
+      "metadata": { "kind": "primary" }
+    },
+    {
+      "parent": "fe4896187fca7405",
+      "child": "63f75f8ec974948e",
+      "type": "dependency-of"
+    }
+  ],
+  "files": [
+    { "id": "1b2b37f4aaeb40d1", "location": { "path": "\\package-lock.json" } }
+  ],
+  "source": {
+    "id": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+    "name": ".",
+    "version": "",
+    "type": "directory",
+    "metadata": { "path": "." }
+  },
+  "distro": {},
+  "descriptor": {
+    "name": "syft",
+    "version": "1.40.1",
+    "configuration": {
+      "catalogers": {
+        "requested": { "default": ["directory", "file"] },
+        "used": [
+          "alpm-db-cataloger",
+          "apk-db-cataloger",
+          "binary-classifier-cataloger",
+          "cargo-auditable-binary-cataloger",
+          "cocoapods-cataloger",
+          "conan-cataloger",
+          "conda-meta-cataloger",
+          "dart-pubspec-cataloger",
+          "dart-pubspec-lock-cataloger",
+          "deb-archive-cataloger",
+          "dotnet-deps-binary-cataloger",
+          "dotnet-packages-lock-cataloger",
+          "dpkg-db-cataloger",
+          "elf-binary-package-cataloger",
+          "elixir-mix-lock-cataloger",
+          "erlang-otp-application-cataloger",
+          "erlang-rebar-lock-cataloger",
+          "file-content-cataloger",
+          "file-digest-cataloger",
+          "file-executable-cataloger",
+          "file-metadata-cataloger",
+          "gguf-cataloger",
+          "github-action-workflow-usage-cataloger",
+          "github-actions-usage-cataloger",
+          "go-module-binary-cataloger",
+          "go-module-file-cataloger",
+          "graalvm-native-image-cataloger",
+          "haskell-cataloger",
+          "homebrew-cataloger",
+          "java-archive-cataloger",
+          "java-gradle-lockfile-cataloger",
+          "java-jvm-cataloger",
+          "java-pom-cataloger",
+          "javascript-lock-cataloger",
+          "linux-kernel-cataloger",
+          "lua-rock-cataloger",
+          "nix-cataloger",
+          "opam-cataloger",
+          "pe-binary-package-cataloger",
+          "php-composer-lock-cataloger",
+          "php-interpreter-cataloger",
+          "php-pear-serialized-cataloger",
+          "portage-cataloger",
+          "python-installed-package-cataloger",
+          "python-package-cataloger",
+          "r-package-cataloger",
+          "rpm-archive-cataloger",
+          "rpm-db-cataloger",
+          "ruby-gemfile-cataloger",
+          "ruby-gemspec-cataloger",
+          "rust-cargo-lock-cataloger",
+          "snap-cataloger",
+          "swift-package-manager-cataloger",
+          "swipl-pack-cataloger",
+          "terraform-lock-cataloger",
+          "wordpress-plugins-cataloger"
+        ]
+      },
+      "data-generation": { "generate-cpes": true },
+      "files": {
+        "content": { "globs": null, "skip-files-above-size": 0 },
+        "hashers": ["sha-1", "sha-256"],
+        "selection": "owned-by-package"
+      },
+      "licenses": { "coverage": 75, "include-content": "none" },
+      "packages": {
+        "binary": [
+          "python-binary",
+          "python-binary-lib",
+          "pypy-binary-lib",
+          "go-binary",
+          "julia-binary",
+          "helm",
+          "redis-binary",
+          "valkey-binary",
+          "nodejs-binary",
+          "go-binary-hint",
+          "busybox-binary",
+          "util-linux-binary",
+          "haproxy-binary",
+          "perl-binary",
+          "php-composer-binary",
+          "httpd-binary",
+          "memcached-binary",
+          "traefik-binary",
+          "arangodb-binary",
+          "postgresql-binary",
+          "mysql-binary",
+          "mysql-binary",
+          "mysql-binary",
+          "xtrabackup-binary",
+          "mariadb-binary",
+          "rust-standard-library-linux",
+          "rust-standard-library-macos",
+          "ruby-binary",
+          "erlang-binary",
+          "erlang-alpine-binary",
+          "erlang-library",
+          "swipl-binary",
+          "dart-binary",
+          "haskell-ghc-binary",
+          "haskell-cabal-binary",
+          "haskell-stack-binary",
+          "consul-binary",
+          "hashicorp-vault-binary",
+          "nginx-binary",
+          "bash-binary",
+          "openssl-binary",
+          "gcc-binary",
+          "fluent-bit-binary",
+          "wordpress-cli-binary",
+          "curl-binary",
+          "lighttpd-binary",
+          "proftpd-binary",
+          "zstd-binary",
+          "xz-binary",
+          "gzip-binary",
+          "sqlcipher-binary",
+          "jq-binary",
+          "chrome-binary",
+          "ffmpeg-binary",
+          "ffmpeg-library",
+          "ffmpeg-library",
+          "elixir-binary",
+          "elixir-library",
+          "istio-binary",
+          "istio-binary",
+          "grafana-binary",
+          "grafana-binary",
+          "envoy-binary",
+          "mongodb-binary",
+          "java-binary",
+          "java-jdb-binary"
+        ],
+        "dotnet": {
+          "dep-packages-must-claim-dll": true,
+          "dep-packages-must-have-dll": false,
+          "exclude-project-references": true,
+          "propagate-dll-claims-to-parents": true,
+          "relax-dll-claims-when-bundling-detected": true
+        },
+        "golang": {
+          "local-mod-cache-dir": "C:\\Users\\Jeon Youwe\\go\\pkg\\mod",
+          "local-vendor-dir": "",
+          "main-module-version": {
+            "from-build-settings": true,
+            "from-contents": false,
+            "from-ld-flags": true
+          },
+          "proxies": ["https://proxy.golang.org", "direct"],
+          "search-local-mod-cache-licenses": false,
+          "search-local-vendor-licenses": false,
+          "search-remote-licenses": false,
+          "use-packages-lib": true
+        },
+        "java-archive": {
+          "include-indexed-archives": true,
+          "include-unindexed-archives": false,
+          "maven-base-url": "https://repo1.maven.org/maven2",
+          "maven-localrepository-dir": "C:\\Users\\Jeon Youwe\\.m2\\repository",
+          "max-parent-recursive-depth": 0,
+          "resolve-transitive-dependencies": false,
+          "use-maven-localrepository": false,
+          "use-network": false
+        },
+        "javascript": {
+          "include-dev-dependencies": false,
+          "npm-base-url": "https://registry.npmjs.org",
+          "search-remote-licenses": false
+        },
+        "linux-kernel": { "catalog-modules": true },
+        "nix": { "capture-owned-files": false },
+        "python": {
+          "guess-unpinned-requirements": false,
+          "pypi-base-url": "https://pypi.org/pypi",
+          "search-remote-licenses": false
+        }
+      },
+      "relationships": {
+        "exclude-binary-packages-with-file-ownership-overlap": true,
+        "package-file-ownership": true,
+        "package-file-ownership-overlap": true
+      },
+      "search": { "scope": "squashed" }
+    }
+  },
+  "schema": {
+    "version": "16.1.2",
+    "url": "https://raw.githubusercontent.com/anchore/syft/main/schema/json/schema-16.1.2.json"
+  }
+}

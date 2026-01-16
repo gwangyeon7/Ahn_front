@@ -1,0 +1,12 @@
+{
+    "report_info": {
+        "project_name": "SBOM-security-project",
+        "inspector": "JeonYouwe",
+        "scan_date": "2026-01-17 02:02:53",
+        "environment": "Windows / Git Bash"
+    },
+    "files_generated": [
+        "libraries.json",
+        "vulnerabilities.json"
+    ]
+}

@@ -15,7 +15,7 @@ def process_security_data():
         with open(f"{base_path}/vulnerabilities.json", "r", encoding="utf-8") as f:
             vulnerabilities = json.load(f)
     except FileNotFoundError as e:
-        print(f"❌ 파일을 찾을 수 없습니다: {e}")
+        print(f"해당 파일을 찾을 수 없습니다: {e}")
         return
 
     # 2. 데이터 가공 (백엔드용 요약본 생성)

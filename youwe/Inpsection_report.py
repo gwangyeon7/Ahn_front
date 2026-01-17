@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 import os
+# 검사 이력 정보 json 파일 생성
 
 def create_scan_report(user_name):
     # 1. 정보 설정 (딕셔너리로 작성)
@@ -30,4 +31,4 @@ def create_scan_report(user_name):
 
 # 실행
 if __name__ == "__main__":
-    create_scan_report("JeonYouwe") # 본인 이름을 넣으세요
+    create_scan_report("JeonYouwe") # 검사하는 사람 이름으로 설정

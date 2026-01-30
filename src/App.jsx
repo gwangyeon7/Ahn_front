@@ -1,11 +1,26 @@
-// 1. 경로에서 ./src/를 빼고, 파일명 frontDashboard를 정확히 입력합니다.
-import FrontDashboard from './components/frontDashboard.jsx'; 
+// src/App.jsx
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing";
+import Login from "./pages/Login"; // 로그인 페이지 임포트
+import Dashboard from "./pages/Dashboard"; // 대시보드 페이지 임포트
 
 function App() {
   return (
     <div className="App">
-      {/* 2. 위에서 import한 이름인 'FrontDashboard'를 태그로 사용합니다. */}
-      <FrontDashboard />
+      <Routes>
+        {/* 첫 화면은 무조건 랜딩 페이지 */}
+        <Route path="/" element={<Landing />} />
+
+        {/* 로그인 버튼 누르면 이동할 경로 */}
+        <Route path="/login" element={<Login />} />
+
+        {/* 로그인 성공 후 갈 대시보드 경로 */}
+        <Route path="/app/dashboard" element={<Dashboard />} />
+
+        {/* 추가적인 페이지들 (필요시) */}
+        {/* <Route path="/vulnerabilities" element={<VulnerabilityList />} /> */}
+      </Routes>
     </div>
   );
 }

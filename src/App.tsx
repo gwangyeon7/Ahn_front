@@ -4,8 +4,8 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Landing from "./pages/Landing";
-import Dashboard from "./pages/Dashboard";
+import Landing from "./Screens/Landing";
+import Dashboard from "./Screens/Dashboard";
 // import Login from "./Auth/Login"; // 나중에 Auth 폴더 작업 시 주석 해제
 import "./App.css";
 

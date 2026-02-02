@@ -1,29 +1,13 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import Landing from "./Screens/Landing";
-import Dashboard from "./Screens/Dashboard";
-// import Login from "./Auth/Login"; // 나중에 Auth 폴더 작업 시 주석 해제
-import "./App.css";
+// src/App.tsx
+import React from "react";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* 1. 처음 들어오면 무조건 랜딩 페이지 */}
-        <Route path="/" element={<Landing />} />
-
-        {/* 2. 대시보드 주소 */}
-        <Route path="/dashboard" element={<Dashboard />} />
-
-        {/* 3. 혹시 이상한 주소로 들어오면 다시 랜딩으로 튕겨내기 */}
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </Router>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>Ahn_front 정상화 완료!</h1>
+      <p>이제 요새를 지을 준비가 되었습니다.</p>
+    </div>
   );
 }
 
-export default App;
+export default App; // 이게 있어야 main.tsx에서 에러가 안 납니다!

@@ -41,15 +41,19 @@ export const styles: Record<string, React.CSSProperties> = {
     cursor: "pointer",
     opacity: 0.8,
   },
-  loginBadge: {
+  login: {
+    fontSize: "14px",
     color: "#ffffff",
-    padding: "10px 12px",
-
-    fontSize: "12px",
-
     cursor: "pointer",
-    margin: "100px",
+    width: "70px",
+    height: "40px", 
+    background: "linear-gradient(180deg, #2f6fff 0%, #1f4ed8 100%)",
+    borderRadius: "22px",
+    display: "flex",
+    alignItems: "center",
     justifyContent: "center",
-    width: "150px",
-  },
+    boxShadow: "0 6px 14px rgba(47, 111, 255, 0.45)",    // 버튼 아래 입체 그림자
+    fontWeight: 900,
+  }
+  
 };

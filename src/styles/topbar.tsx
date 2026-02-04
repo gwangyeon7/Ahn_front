@@ -22,7 +22,7 @@ export const styles: Record<string, React.CSSProperties> = {
     padding: "5px 8px",
     borderRadius: "4px",
     fontWeight: "bold",
-    fontSize: "30px",
+    fontSize: "50px",
     color: "#fff",
   },
   logoTextContainer: {

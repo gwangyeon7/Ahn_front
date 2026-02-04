@@ -24,6 +24,7 @@ export const styles: Record<string, React.CSSProperties> = {
     fontWeight: "bold",
     fontSize: "50px",
     color: "#fff",
+    
   },
   logoTextContainer: {
     display: "flex",

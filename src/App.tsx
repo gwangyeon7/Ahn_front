@@ -1,13 +1,12 @@
-// src/App.tsx
 import React from "react";
-
+import Topbar from "./Screens/IntroduceScreen/Topbar";
 function App() {
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Ahn_front 정상화 완료!</h1>
-      <p>이제 요새를 지을 준비가 되었습니다.</p>
+    <div style={{ backgroundColor: "#050a14", minHeight: "100vh" }}>
+      <Topbar />
+      {/* 여기에 나중에 본문 내용들이 들어올 거예요 */}
     </div>
   );
 }
 
-export default App; // 이게 있어야 main.tsx에서 에러가 안 납니다!
+export default App;

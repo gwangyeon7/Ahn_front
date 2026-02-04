@@ -1,5 +1,5 @@
 import React from "react";
-import { styles } from "../../styles/Allbackroundstyle";
+import { styles } from "../../styles/topbar";
 
 const Topbar = () => {
   return (

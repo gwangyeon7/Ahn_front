@@ -6,12 +6,17 @@ const Topbar = () => {
     <header style={styles.headerContainer}>
       {/* 로고 부분 */}
       <div style={styles.logoSection}>
-        <div style={styles.logoBox}>ZCS</div>
+        <div style={styles.logoBox}>
+          <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",fontWeight: "bold", fontSize: "40px", color: "#fff" }}>
+            ZCS
+          </div>
+        </div>
+
         <div style={styles.logoTextContainer}>
-          <div style={{ fontWeight: "bold", fontSize: "14px", color: "#fff" }}>
+          <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",fontWeight: "bold", fontSize: "14px", color: "#fff" }}>
             Zero Check SBOM
           </div>
-          <div style={{ fontSize: "10px", color: "#aaa" }}>
+          <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",fontSize: "10px", color: "#aaa" }}>
             Security Service
           </div>
         </div>

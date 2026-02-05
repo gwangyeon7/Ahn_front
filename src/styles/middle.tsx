@@ -9,6 +9,12 @@ export const middleStyles: Record<string, React.CSSProperties> = {
     display: "flex",
     alignItems: "center",
     padding: "0 60px",
+
+    backgroundImage:
+    "linear-gradient(180deg, rgba(5,10,20,0.55), rgba(5,10,20,0.65)), url('/paint.png')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
   },
 
   // 텍스트/버튼 묶음
@@ -21,18 +27,21 @@ export const middleStyles: Record<string, React.CSSProperties> = {
 
   title: {
     fontSize: "64px",
-    fontWeight: 900,
+    fontWeight: 700,
     color: "#ffffff",
     margin: 0,
     lineHeight: 1.05,
     letterSpacing: "0.5px",
     textTransform: "uppercase",
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",
   },
 
   subTitle: {
-    fontSize: "18px",
-    color: "rgba(255,255,255,0.75)",
+    fontSize: "16px",
+    color: "rgba(255,255,255,0.7)",
+    lineHeight: 1.6,
     margin: 0,
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",
   },
 
   // 버튼 (초록 대신 어두운 파란색)
@@ -48,5 +57,6 @@ export const middleStyles: Record<string, React.CSSProperties> = {
     fontSize: "13px",
     letterSpacing: "0.6px",
     cursor: "pointer",
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",
   },
 };

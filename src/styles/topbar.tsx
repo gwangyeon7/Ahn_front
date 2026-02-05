@@ -18,9 +18,7 @@ export const styles: Record<string, React.CSSProperties> = {
     gap: "15px",
   },
   logoBox: {
-    backgroundColor: "#1a1f2b",
     padding: "5px 8px",
-    borderRadius: "4px",
     fontWeight: "bold",
     fontSize: "50px",
     color: "#fff",
@@ -34,26 +32,24 @@ export const styles: Record<string, React.CSSProperties> = {
     display: "flex",
     alignItems: "center",
     gap: "25px",
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",
   },
   navItem: {
     fontSize: "14px",
     color: "#ffffff",
     cursor: "pointer",
     opacity: 0.8,
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",
   },
   login: {
     fontSize: "14px",
     color: "#ffffff",
+    opacity: 0.8,
     cursor: "pointer",
-    width: "70px",
-    height: "40px", 
-    background: "linear-gradient(180deg, #2f6fff 0%, #1f4ed8 100%)",
-    borderRadius: "22px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    boxShadow: "0 6px 14px rgba(47, 111, 255, 0.45)",    // 버튼 아래 입체 그림자
-    fontWeight: 900,
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",
   }
   
 };

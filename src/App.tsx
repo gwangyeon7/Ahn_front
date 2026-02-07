@@ -1,8 +1,12 @@
 import React from "react";
-import Introduce from "./Screens/IntroduceScreen/Introduce";
+import Router from "./navigation/Router";
 
-document.body.style.margin = "0";
 
 export default function App() {
-  return <Introduce />;
+  return (
+  <div style={{ minHeight: "100vh", margin: 0 }}>
+    <Router />
+  </div>
+);
+
 }

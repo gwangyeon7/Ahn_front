@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { styles } from "../../styles/topbar";
 
 const Topbar = () => {
+  const navigate = useNavigate();
+
   return (
     <header style={styles.headerContainer}>
       {/* 로고 부분 */}
@@ -24,12 +27,10 @@ const Topbar = () => {
 
       {/* 메뉴 부분 */}
       <nav style={styles.navSection}>
-        <span style={styles.navItem}>회사소개</span>
-        <span style={styles.navItem}>사업소개</span>
-        <span style={styles.navItem}>주요고객사</span>
-        <span style={styles.navItem}>고객지원</span>
-        <span style={styles.navItem}>점검</span>
-        <span style={styles.login}>로그인</span>
+        <span style={styles.navItem}onClick={() => navigate("/upload")}>파일 입력</span>
+        <span style={styles.navItem}>저장소</span>
+        <span style={styles.navItem}>해결방안</span>
+        <span style={styles.login}onClick={() => navigate("/login")}>로그인</span>
       </nav>
     </header>
   );

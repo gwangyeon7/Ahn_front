@@ -1,3 +1,4 @@
+import React from "react";
 import Topbar from "./Topbar";
 import Middle from "./Middle";
 import Bottom from "./Bottom";

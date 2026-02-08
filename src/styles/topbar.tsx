@@ -18,9 +18,7 @@ export const styles: Record<string, React.CSSProperties> = {
     gap: "15px",
   },
   logoBox: {
-    backgroundColor: "#1a1f2b",
     padding: "5px 8px",
-    borderRadius: "4px",
     fontWeight: "bold",
     fontSize: "50px",
     color: "#fff",
@@ -35,22 +33,24 @@ export const styles: Record<string, React.CSSProperties> = {
     display: "flex",
     alignItems: "center",
     gap: "25px",
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",
   },
   navItem: {
     fontSize: "14px",
     color: "#ffffff",
     cursor: "pointer",
     opacity: 0.8,
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",
   },
-  loginBadge: {
+  login: {
+    fontSize: "14px",
     color: "#ffffff",
-    padding: "10px 12px",
-
-    fontSize: "12px",
-
+    opacity: 0.8,
     cursor: "pointer",
-    margin: "100px",
+    display: "flex",
+    alignItems: "center",
     justifyContent: "center",
-    width: "150px",
-  },
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",
+  }
+  
 };

@@ -1,18 +1,13 @@
-// src/services/_private/Regi/SignUpApi.ts
 import axios from "axios";
 
 const BASE_URL = "https://zerocheck-sbom.store/api";
 
-/**
- * [회원가입 기능]
- * 사용자가 입력한 모든 정보(memberData)를 통째로 봉투에 넣어 보냅니다.
- */
-export const requestSignUp = async (memberData: any) => {
+export const requestSignUp = async (userData: any) => {
   try {
-    // memberData 안에는 이미 membId, membPwd 등이 엔티티 이름과 똑같이 들어있어야 함!
-    const response = await axios.post(`${BASE_URL}/signup`, memberData);
+    // 백엔드 @RequestBody Member member 주소로 데이터 전송
+    const response = await axios.post(`${BASE_URL}/signup`, userData);
 
-    if (response.data && response.data.success) {
+    if (response.data && response.data.success === true) {
       console.log("회원가입 성공!");
       return response.data;
     } else {
@@ -20,7 +15,7 @@ export const requestSignUp = async (memberData: any) => {
       return response.data;
     }
   } catch (error) {
-    console.error("회원가입 서버 통신 에러:", error);
-    return { success: false, message: "서버 연결에 실패했습니다." };
+    console.error("회원가입 통신 에러:", error);
+    return { success: false, message: "회원가입 중 서버 에러가 발생했습니다." };
   }
 };

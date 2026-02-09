@@ -1,32 +1,29 @@
-// src/services/_private/Login/LoginApi.ts
-import axios from 'axios';
+import axios from "axios";
 
-// 공통 주소 (api까지 포함)
+// 백엔드 주소 (리더님의 서버 주소 + /api)
 const BASE_URL = "https://zerocheck-sbom.store/api";
 
-/**
- * [로그인 기능]
- * 화면에서 넘겨받은 id와 pass를 백엔드가 원하는 '이름표'를 붙여서 보냅니다.
- */
 export const requestLogin = async (id: string, pass: string) => {
   try {
+    // 1. 백엔드 Map<String, String>이 기다리는 이름표로 봉투 만들기
     const loginData = {
-      membId: id,   // 백엔드 .get("membId")와 이름 맞춤
-      membPwd: pass // 백엔드 .get("membPwd")와 이름 맞춤
+      membId: id,
+      membPwd: pass,
     };
 
+    // 2. 서버로 전달
     const response = await axios.post(`${BASE_URL}/login`, loginData);
 
-    // 리더님의 ApiResponse { success, message } 구조 확인
-    if (response.data && response.data.success) {
-      console.log("로그인 성공!");
-      return response.data;
+    // 3. 백엔드의 ApiResponse.java (success, message) 구조 확인
+    if (response.data && response.data.success === true) {
+      console.log("로그인 성공 메시지:", response.data.message);
+      return response.data; // 성공 시 데이터 반환
     } else {
       console.log("로그인 실패:", response.data.message);
-      return response.data;
+      return response.data; // 실패 시에도 메시지 확인 위해 반환
     }
   } catch (error) {
-    console.error("로그인 서버 통신 에러:", error);
-    return { success: false, message: "서버 연결에 실패했습니다." };
+    console.error("서버 연결 실패:", error);
+    return { success: false, message: "서버와 통신할 수 없습니다." };
   }
 };

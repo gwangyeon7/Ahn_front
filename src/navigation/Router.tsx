@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Introduce from "../Screens/IntroduceScreen/Introduce";
-import Login from "../components/login";
+import Login from "../Screens/LoginScreen/login";
 import FileUploadScreen from "../Screens/FileUploadScreen";
 
 export default function Router() {

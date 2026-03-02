@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CommonStyle from "../../styles/CommonStyle";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // 이동할수 있게 해주는 hook
 import { signUpApiCall } from "../../services/_private/SignUp/SignUpApi";
 
 export default function SignUp() {
@@ -11,6 +11,7 @@ export default function SignUp() {
     password: "",
     name: "",
     email: "",
+    confirmPassword: "", //이거 다시 확인 제미니 병신이라
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,6 +23,8 @@ export default function SignUp() {
     // 간단한 유효성 검사
     // formData거 가져다 쓴다
     const { id, password, name, email } = formData;
+
+
     if (!id || !password || !name || !email) {
       alert("모든 정보를 입력해주세요.");
       return;
@@ -29,7 +32,7 @@ export default function SignUp() {
 
     try {
       const result = await signUpApiCall({ id, password, name, email });
-
+      console.log("백엔드 응답:", result);
       if (result && result.status === "success") {
         alert("회원가입이 완료되었습니다! 로그인 해주세요.");
         navigate("/login"); // 성공 시 로그인 페이지로 이동
@@ -115,12 +118,14 @@ export default function SignUp() {
             name="name"
             placeholder="Name"
             style={styles.input}
+            value={formData.name}
             onChange={handleChange}
           />
           <input
             name="id"
             placeholder="ID"
             style={styles.input}
+            value={formData.id}
             onChange={handleChange}
           />
           <input
@@ -128,6 +133,7 @@ export default function SignUp() {
             type="email"
             placeholder="Email Address"
             style={styles.input}
+            value={formData.email}
             onChange={handleChange}
           />
           <input
@@ -135,6 +141,7 @@ export default function SignUp() {
             type="password"
             placeholder="Password"
             style={styles.input}
+            value={formData.password}
             onChange={handleChange}
           />
           <input
@@ -142,6 +149,7 @@ export default function SignUp() {
             type="password"
             placeholder="Confirm Password"
             style={styles.input}
+            value={formData.confirmPassword}  //  여기도 다시 보기
             onChange={handleChange}
           />
 

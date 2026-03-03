@@ -7,18 +7,18 @@ export const signUpApiCall = async (userData: any) => {
   const endpoint = "signup";
 
   try {
-    // 1. 백엔드 규격에 맞게 데이터 매핑 (이 박스를 보내야 합니다!)
+    // 1. 백엔드 규격에 맞게 데이터 payload에 넣기
     const payload = {
       membId: userData.id,
       membPwd: userData.password,
       membNm: userData.name,
       membEmail: userData.email,
-    };
+    }; // 여기가 이제 엔티티에서 정한 이름 프론트쪽에서도 지정하는곳
 
     console.log("🚀 회원가입 요청 전송 데이터:", payload);
 
     // 2. 가공된 payload를 post에 실어서 보냅니다.
-    const response = await axiosInstance.post(endpoint, payload);
+    const response = await axiosInstance.post(endpoint, payload); // 이게 음 프론트에서 json형식으로 우리가 만든 컨트롤러쪽 주소로 데이터를 보낸다는 뜻
 
     // 3. 서버 응답 반환
     if (response.data) {

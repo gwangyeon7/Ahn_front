@@ -11,7 +11,7 @@ export const middleStyles: Record<string, React.CSSProperties> = {
     padding: "0 60px",
 
     backgroundImage:
-    "linear-gradient(180deg, rgba(5,10,20,0.55), rgba(5,10,20,0.65)), url('/paint.png')",
+    "linear-gradient(180deg, rgba(5,10,20,0.07), rgba(5,10,20,0.1)), url('/middleback.png')",
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
@@ -28,7 +28,7 @@ export const middleStyles: Record<string, React.CSSProperties> = {
   title: {
     fontSize: "64px",
     fontWeight: 700,
-    color: "#ffffff",
+    color: "#1f4e8c",
     margin: 0,
     lineHeight: 1.05,
     letterSpacing: "0.5px",
@@ -38,7 +38,7 @@ export const middleStyles: Record<string, React.CSSProperties> = {
 
   subTitle: {
     fontSize: "16px",
-    color: "rgba(255,255,255,0.7)",
+    color: "#a6a6a6",
     lineHeight: 1.6,
     margin: 0,
     fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",
@@ -51,7 +51,7 @@ export const middleStyles: Record<string, React.CSSProperties> = {
     height: "46px",
     border: "none",
     borderRadius: "6px",
-    backgroundColor: "#1f4e8c", // 어두운 파란
+    backgroundColor: "#173357", // 어두운 파란
     color: "#ffffff",
     fontWeight: 800,
     fontSize: "13px",

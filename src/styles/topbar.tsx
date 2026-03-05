@@ -8,8 +8,8 @@ export const styles: Record<string, React.CSSProperties> = {
     alignItems: "center",
     padding: "0 40px",
     height: "70px",
-    backgroundColor: "#050a14",
-    borderBottom: "1px solid #1a1f2b",
+    backgroundColor: "#eeeeee",
+    borderBottom: "1px solid #eeeeee",
   },
   // 2. 로고 영역 (왼쪽)
   logoSection: {
@@ -21,8 +21,7 @@ export const styles: Record<string, React.CSSProperties> = {
     padding: "5px 8px",
     fontWeight: "bold",
     fontSize: "50px",
-    color: "#fff",
-    
+    color: "#282e4c",
   },
   logoTextContainer: {
     display: "flex",
@@ -37,14 +36,14 @@ export const styles: Record<string, React.CSSProperties> = {
   },
   navItem: {
     fontSize: "14px",
-    color: "#ffffff",
+    color: "#000000",
     cursor: "pointer",
     opacity: 0.8,
     fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif",
   },
   login: {
     fontSize: "14px",
-    color: "#ffffff",
+    color: "#000000",
     opacity: 0.8,
     cursor: "pointer",
     display: "flex",

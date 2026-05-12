@@ -15,12 +15,12 @@ export default function Login() {
       return;
     } // 빈칸인지 아닌지 검사하기
     try {
-      const resault = await loginApiCall(id, password); // loginApi.ts한테 아이디 비번 가지고 서버에서 맞는지 확인해라
+      const result = await loginApiCall(id, password); // loginApi.ts한테 아이디 비번 가지고 서버에서 맞는지 확인해라
 
-      if (resault && resault.status === "success") {
+      if (result && result.success === true) {
         alert(`${id}님, 로그인 성공!`); // 여기서 영어일때 ₩키누르면 백틱 표시 백틱은 안에 진짜 데이터 값이 들어간다는 표시
       } else {
-        alert(resault?.message || "로그인 정보를 확인해주세요."); // 물음표를 쓰는이유는 값이 없을떄 강제꺼짐을 방지
+        alert(result?.message || "로그인 정보를 확인해주세요."); // 물음표를 쓰는이유는 값이 없을떄 강제꺼짐을 방지
       }
     } catch (error) {
       // 보험 인터넷 끊김등의 예기치 못한 사고일때 멈추지 않게 잡기위함

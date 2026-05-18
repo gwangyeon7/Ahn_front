@@ -24,7 +24,6 @@ export default function SignUp() {
     // formData거 가져다 쓴다
     const { id, password, name, email } = formData;
 
-
     if (!id || !password || !name || !email) {
       alert("모든 정보를 입력해주세요.");
       return;
@@ -33,7 +32,7 @@ export default function SignUp() {
     try {
       const result = await signUpApiCall({ id, password, name, email });
       console.log("백엔드 응답:", result);
-      if (result && result.status === "success") {
+      if (result && result.success === true) {
         alert("회원가입이 완료되었습니다! 로그인 해주세요.");
         navigate("/login"); // 성공 시 로그인 페이지로 이동
       } else {
@@ -149,7 +148,7 @@ export default function SignUp() {
             type="password"
             placeholder="Confirm Password"
             style={styles.input}
-            value={formData.confirmPassword}  //  여기도 다시 보기
+            value={formData.confirmPassword} //  여기도 다시 보기
             onChange={handleChange}
           />
 

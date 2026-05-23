@@ -1,5 +1,19 @@
 import { axiosInstance } from "./ApiConfig";
 
+export type ScanResult = {
+  resultSeq: number;
+  fileSeq: number;
+  vulnId?: string;
+  cveId?: string;
+  source?: string;
+  pkgName: string;
+  pkgType?: string;
+  pkgVersion: string;
+  severity: string;
+  fixedVer?: string;
+  scanDt?: string;
+};
+
 export const uploadSbomFile = async (file: File, membSeq: number) => {
   const formData = new FormData();
   formData.append("file", file);
@@ -18,4 +32,9 @@ export const uploadSbomFile = async (file: File, membSeq: number) => {
       message: error.response?.data?.message || "업로드 실패",
     };
   }
+};
+
+export const getScanResults = async (fileSeq: string | number) => {
+  const response = await axiosInstance.get(`/files/${fileSeq}/scan-results`);
+  return response.data;
 };

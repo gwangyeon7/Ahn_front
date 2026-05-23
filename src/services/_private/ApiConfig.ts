@@ -8,5 +8,5 @@ import axios from "axios";
 // 2. 공용 트럭 생성
 export const axiosInstance = axios.create({
   baseURL: BASE_URL,
-  timeout: 5000,
+  timeout: 120000,
 });

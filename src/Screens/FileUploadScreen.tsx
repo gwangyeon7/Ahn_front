@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { fileUploadStyles as s } from "../styles/fileUpload";
 import FileInputBox from "../components/FileDropInput";
 // SbomApi에서 만든 uploadSbomFile 함수 가져오기
 import { uploadSbomFile } from "../services/_private/SbomApi";
 
 export default function FileUploadScreen() {
+  const navigate = useNavigate();
+  const [isUploading, setIsUploading] = useState(false);
+
   const handleFilesChange = (files: File[]) => {
     // 파일 선택했을 때 (아직 업로드 안함)
     console.log("선택된 파일:", files);
@@ -13,21 +17,31 @@ export default function FileUploadScreen() {
   const handleAnalyze = async (files: File[]) => {
     // 분석 시작 버튼 눌렀을 때 실제 업로드
     if (files.length === 0) return;
+    if (isUploading) return;
 
-    // 여러 파일 선택했을 경우 하나씩 순서대로 업로드
-    for (const file of files) {
-      // SbomApi.ts의 uploadSbomFile 호출
-      // file → 실제 파일
+    setIsUploading(true);
 
-      const result = await uploadSbomFile(file, 1); // 1 → 지금은 membSeq 임시로 1 (나중에 로그인 세션에서 가져올 예정)
+    try {
+      // 여러 파일 선택했을 경우 하나씩 순서대로 업로드
+      for (const file of files) {
+        // SbomApi.ts의 uploadSbomFile 호출
+        // file → 실제 파일
+        const result = await uploadSbomFile(file, 1); // 1 → 지금은 membSeq 임시로 1 (나중에 로그인 세션에서 가져올 예정)
 
-      if (result.success) {
-        // 백엔드에서 success: true 오면 성공
-        alert(`${file.name} 업로드 성공!`);
-      } else {
-        // 백엔드에서 success: false 오면 실패
-        alert(`${file.name} 업로드 실패: ${result.message}`);
+        if (result.success) {
+          // 백엔드에서 success: true 오면 성공
+          const fileSeq = result.data?.fileSeq;
+          alert(`${file.name} 업로드 성공! 분석 결과 페이지로 이동합니다.`);
+          if (fileSeq) {
+            navigate(`/scan-result/${fileSeq}`);
+          }
+        } else {
+          // 백엔드에서 success: false 오면 실패
+          alert(`${file.name} 업로드 실패: ${result.message}`);
+        }
       }
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -45,6 +59,11 @@ export default function FileUploadScreen() {
           onFilesChange={handleFilesChange}
           onAnalyze={handleAnalyze}
         />
+        {isUploading && (
+          <div style={{ color: "#fff", marginTop: 12 }}>
+            업로드 및 분석 중입니다...
+          </div>
+        )}
       </div>
     </section>
   );

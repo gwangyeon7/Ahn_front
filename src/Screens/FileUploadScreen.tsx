@@ -31,9 +31,12 @@ export default function FileUploadScreen() {
         if (result.success) {
           // 백엔드에서 success: true 오면 성공
           const fileSeq = result.data?.fileSeq;
-          alert(`${file.name} 업로드 성공! 분석 결과 페이지로 이동합니다.`);
           if (fileSeq) {
             navigate(`/scan-result/${fileSeq}`);
+          } else {
+            alert(
+              `${file.name} 업로드는 성공했지만 분석 결과 번호를 받지 못했습니다. 백엔드가 최신 코드로 재시작됐는지 확인해주세요.`,
+            );
           }
         } else {
           // 백엔드에서 success: false 오면 실패

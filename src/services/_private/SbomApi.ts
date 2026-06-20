@@ -14,6 +14,27 @@ export type ScanResult = {
   scanDt?: string;
 };
 
+export type SbomComponent = {
+  componentSeq: number;
+  fileSeq: number;
+  pkgName: string;
+  pkgVersion?: string;
+  pkgType?: string;
+  license?: string;
+};
+
+export type FixPlanItem = {
+  pkgName: string;
+  pkgType?: string;
+  currentVersion?: string;
+  targetVersion?: string;
+  severity?: string;
+  vulnId?: string;
+  autoApplicable: boolean;
+  targetFile?: string;
+  action: string;
+};
+
 export const uploadSbomFile = async (file: File, membSeq: number) => {
   const formData = new FormData();
   formData.append("file", file);
@@ -37,4 +58,21 @@ export const uploadSbomFile = async (file: File, membSeq: number) => {
 export const getScanResults = async (fileSeq: string | number) => {
   const response = await axiosInstance.get(`/files/${fileSeq}/scan-results`);
   return response.data;
+};
+
+export const getComponents = async (fileSeq: string | number) => {
+  const response = await axiosInstance.get(`/files/${fileSeq}/components`);
+  return response.data;
+};
+
+export const getFixPlan = async (fileSeq: string | number) => {
+  const response = await axiosInstance.get(`/files/${fileSeq}/fix-plan`);
+  return response.data;
+};
+
+export const downloadFixedZip = async (fileSeq: string | number) => {
+  const response = await axiosInstance.get(`/files/${fileSeq}/fixed-zip`, {
+    responseType: "blob",
+  });
+  return response;
 };

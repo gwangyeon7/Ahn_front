@@ -1,16 +1,63 @@
-# React + Vite
+# Zero Check SBOM
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SBOM 또는 프로젝트 ZIP 파일을 업로드해 오픈소스 구성요소의 취약점을 분석하고, 수정 가능한 버전과 조치 방법을 보여주는 보안 분석 플랫폼입니다.
 
-Currently, two official plugins are available:
+## MVP
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+현재 MVP 목표는 다음과 같습니다.
 
-## React Compiler
+```text
+사용자가 SBOM 또는 프로젝트 ZIP을 업로드하면
+구성요소를 분석하고,
+알려진 취약점을 탐지한 뒤,
+위험도와 해결 방법을 결과 화면에서 확인할 수 있게 한다.
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 현재 구현된 기능
 
-## Expanding the ESLint configuration
+- 파일 업로드 화면
+- SBOM 파일 업로드
+- 프로젝트 ZIP 파일 업로드
+- 백엔드 Syft/Grype 분석 결과 연동
+- 취약점 결과 페이지
+- Critical, High, Medium, Low 요약 표시
+- 패키지명, 현재 버전, 해결 버전 표시
+- 패키지 타입별 권장 조치 표시
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 분석 흐름
+
+```text
+파일 업로드
+-> 백엔드 저장
+-> ZIP 파일이면 Syft로 SBOM 생성
+-> SBOM 파일이면 Grype로 취약점 분석
+-> 분석 결과 DB 저장
+-> 프론트 결과 페이지 표시
+```
+
+## 주요 화면
+
+- `/` : 서비스 소개
+- `/upload` : 파일 업로드
+- `/scan-result/:fileSeq` : 취약점 분석 결과
+
+## 실행
+
+```bash
+npm install
+npm run dev
+```
+
+백엔드 API 기본 주소:
+
+```text
+http://localhost:18080/api
+```
+
+## 다음 작업 후보
+
+- SBOM 구성요소 목록 화면
+- 라이선스 위험 분석
+- 프로젝트별 스캔 이력
+- 보고서 다운로드
+- 취약점 상세 설명 및 참고 링크

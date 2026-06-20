@@ -1,0 +1,13 @@
+{
+  "name": "auto-fix-demo-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demo project for SBOM vulnerability and fix-plan testing",
+  "dependencies": {
+    "lodash": "4.17.19",
+    "minimist": "0.0.8"
+  },
+  "devDependencies": {
+    "webpack": "4.46.0"
+  }
+}

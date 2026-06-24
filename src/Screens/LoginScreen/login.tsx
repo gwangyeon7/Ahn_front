@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CommonStyle from "../../styles/CommonStyle";
 import { loginApiCall } from "../../services/_private/Login/LoginApi";
 import { useNavigate } from "react-router-dom";
+import { setCurrentUser } from "../../utils/currentUser";
 
 export default function Login() {
   const [id, setId] = useState("");
@@ -18,7 +19,13 @@ export default function Login() {
       const result = await loginApiCall(id, password); // loginApi.ts한테 아이디 비번 가지고 서버에서 맞는지 확인해라
 
       if (result && result.success === true) {
-        alert(`${id}님, 로그인 성공!`); // 여기서 영어일때 ₩키누르면 백틱 표시 백틱은 안에 진짜 데이터 값이 들어간다는 표시
+        const membSeq = result.data?.membSeq;
+        if (membSeq) {
+          setCurrentUser(membSeq, result.data?.membNm);
+          navigation("/");
+          return;
+        }
+        alert("로그인은 성공했지만 회원 번호를 받지 못했습니다. 백엔드 응답을 확인해주세요.");
       } else {
         alert(result?.message || "로그인 정보를 확인해주세요."); // 물음표를 쓰는이유는 값이 없을떄 강제꺼짐을 방지
       }

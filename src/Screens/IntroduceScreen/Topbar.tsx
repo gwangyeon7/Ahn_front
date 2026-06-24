@@ -28,7 +28,8 @@ const Topbar = () => {
       {/* 메뉴 부분 */}
       <nav style={styles.navSection}>
         <span style={styles.navItem}onClick={() => navigate("/upload")}>파일 입력</span>
-        <span style={styles.navItem}>저장소</span>
+        <span style={styles.navItem}onClick={() => navigate("/history")}>저장소</span>
+        <span style={styles.navItem}onClick={() => navigate("/dashboard")}>대시보드</span>
         <span style={styles.navItem}>해결방안</span>
         <span style={styles.login}onClick={() => navigate("/login")}>로그인</span>
       </nav>

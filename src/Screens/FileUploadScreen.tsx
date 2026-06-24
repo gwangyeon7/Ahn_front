@@ -4,6 +4,7 @@ import { fileUploadStyles as s } from "../styles/fileUpload";
 import FileInputBox from "../components/FileDropInput";
 // SbomApi에서 만든 uploadSbomFile 함수 가져오기
 import { uploadSbomFile } from "../services/_private/SbomApi";
+import { getCurrentMembSeq } from "../utils/currentUser";
 
 export default function FileUploadScreen() {
   const navigate = useNavigate();
@@ -22,17 +23,24 @@ export default function FileUploadScreen() {
     setIsUploading(true);
 
     try {
+      const membSeq = getCurrentMembSeq();
+      if (!membSeq) {
+        alert("로그인 후 파일을 분석할 수 있습니다.");
+        navigate("/login");
+        return;
+      }
+
       // 여러 파일 선택했을 경우 하나씩 순서대로 업로드
       for (const file of files) {
         // SbomApi.ts의 uploadSbomFile 호출
         // file → 실제 파일
-        const result = await uploadSbomFile(file, 1); // 1 → 지금은 membSeq 임시로 1 (나중에 로그인 세션에서 가져올 예정)
+        const result = await uploadSbomFile(file, membSeq);
 
         if (result.success) {
           // 백엔드에서 success: true 오면 성공
           const fileSeq = result.data?.fileSeq;
           if (fileSeq) {
-            navigate(`/scan-result/${fileSeq}`);
+            navigate(`/scan-loading/${fileSeq}`);
           } else {
             alert(
               `${file.name} 업로드는 성공했지만 분석 결과 번호를 받지 못했습니다. 백엔드가 최신 코드로 재시작됐는지 확인해주세요.`,

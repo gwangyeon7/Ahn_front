@@ -1,4 +1,5 @@
 import { axiosInstance } from "./ApiConfig";
+import { getCurrentMembSeq } from "../../utils/currentUser";
 
 export type ScanResult = {
   resultSeq: number;
@@ -33,6 +34,44 @@ export type FixPlanItem = {
   autoApplicable: boolean;
   targetFile?: string;
   action: string;
+};
+
+export type FileHistoryItem = {
+  fileSeq: number;
+  fileName: string;
+  fileSize?: number;
+  status?: string;
+  uploadDate?: string;
+  componentCount?: number;
+  criticalCount?: number;
+  highCount?: number;
+  mediumCount?: number;
+  lowCount?: number;
+  totalFindings?: number;
+};
+
+export type FileStatus = {
+  fileSeq: number;
+  fileName?: string;
+  status: "ANALYZING" | "DONE" | "FAILED" | string;
+  uploadDate?: string;
+  scanCount?: number;
+  componentCount?: number;
+};
+
+export type DashboardSummary = {
+  totalFiles: number;
+  doneCount: number;
+  failedCount: number;
+  analyzingCount: number;
+  totalComponents: number;
+  totalFindings: number;
+  criticalCount: number;
+  highCount: number;
+  mediumCount: number;
+  lowCount: number;
+  latestFiles: FileHistoryItem[];
+  riskyFiles: FileHistoryItem[];
 };
 
 export const uploadSbomFile = async (file: File, membSeq: number) => {
@@ -75,4 +114,29 @@ export const downloadFixedZip = async (fileSeq: string | number) => {
     responseType: "blob",
   });
   return response;
+};
+
+export const getFileHistory = async () => {
+  const membSeq = getCurrentMembSeq();
+  if (!membSeq) throw new Error("로그인이 필요합니다.");
+
+  const response = await axiosInstance.get("/files", {
+    params: { membSeq },
+  });
+  return response.data;
+};
+
+export const getFileStatus = async (fileSeq: string | number) => {
+  const response = await axiosInstance.get(`/files/${fileSeq}/status`);
+  return response.data;
+};
+
+export const getDashboardSummary = async () => {
+  const membSeq = getCurrentMembSeq();
+  if (!membSeq) throw new Error("로그인이 필요합니다.");
+
+  const response = await axiosInstance.get("/dashboard/summary", {
+    params: { membSeq },
+  });
+  return response.data;
 };

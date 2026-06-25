@@ -1,9 +1,10 @@
 import { useMemo } from "react";
-import { RotateCcw } from "lucide-react";
+import { History, Home, RotateCcw } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ComponentTable } from "../components/scan/ComponentTable";
 import { FixPlanPanel } from "../components/scan/FixPlanPanel";
 import { LoadingState } from "../components/scan/LoadingState";
+import { PolicyDecisionPanel } from "../components/scan/PolicyDecisionPanel";
 import { PriorityFixes } from "../components/scan/PriorityFixes";
 import { RiskOverview } from "../components/scan/RiskOverview";
 import { ScanSummaryCards } from "../components/scan/ScanSummaryCards";
@@ -27,6 +28,7 @@ export default function ScanResultScreen() {
     results,
     components,
     fixPlan,
+    policyResult,
     isDownloading,
     loading,
     error,
@@ -78,14 +80,32 @@ export default function ScanResultScreen() {
             파일 번호 {fileSeq} 기준의 구성요소, 취약점, 권장 수정 버전입니다.
           </p>
         </div>
-        <button
-          type="button"
-          style={styles.button}
-          onClick={() => navigate("/upload")}
-        >
-          <RotateCcw size={16} />
-          새 파일 분석
-        </button>
+        <div style={styles.headerActions}>
+          <button
+            type="button"
+            style={styles.button}
+            onClick={() => navigate("/")}
+          >
+            <Home size={16} />
+            홈
+          </button>
+          <button
+            type="button"
+            style={styles.button}
+            onClick={() => navigate("/history")}
+          >
+            <History size={16} />
+            히스토리
+          </button>
+          <button
+            type="button"
+            style={styles.primaryActionButton}
+            onClick={() => navigate("/upload")}
+          >
+            <RotateCcw size={16} />
+            새 파일 분석
+          </button>
+        </div>
       </header>
 
       {error ? (
@@ -102,6 +122,8 @@ export default function ScanResultScreen() {
             safeComponentCount={safeComponentCount}
             vulnerableRatio={vulnerableRatio}
           />
+
+          <PolicyDecisionPanel policyResult={policyResult} />
 
           <ScanSummaryCards
             counts={counts}

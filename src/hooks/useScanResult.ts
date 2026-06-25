@@ -3,8 +3,10 @@ import {
   downloadFixedZip,
   getComponents,
   getFixPlan,
+  getPolicyResult,
   getScanResults,
   type FixPlanItem,
+  type PolicyResult,
   type SbomComponent,
   type ScanResult,
 } from "../services/_private/SbomApi";
@@ -13,6 +15,7 @@ export const useScanResult = (fileSeq?: string) => {
   const [results, setResults] = useState<ScanResult[]>([]);
   const [components, setComponents] = useState<SbomComponent[]>([]);
   const [fixPlan, setFixPlan] = useState<FixPlanItem[]>([]);
+  const [policyResult, setPolicyResult] = useState<PolicyResult | null>(null);
   const [isDownloading, setIsDownloading] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -31,11 +34,16 @@ export const useScanResult = (fileSeq?: string) => {
         setComponents(componentResponse.data?.components ?? []);
 
         try {
-          const fixPlanResponse = await getFixPlan(fileSeq);
+          const [fixPlanResponse, policyResponse] = await Promise.all([
+            getFixPlan(fileSeq),
+            getPolicyResult(fileSeq),
+          ]);
           setFixPlan(fixPlanResponse.data?.fixes ?? []);
-        } catch (fixPlanError) {
-          console.warn("수정안 생성 API를 불러오지 못했습니다.", fixPlanError);
+          setPolicyResult(policyResponse.data ?? null);
+        } catch (extraResultError) {
+          console.warn("수정안 또는 정책 판정 API를 불러오지 못했습니다.", extraResultError);
           setFixPlan([]);
+          setPolicyResult(null);
         }
       } catch (e) {
         console.error(e);
@@ -76,6 +84,7 @@ export const useScanResult = (fileSeq?: string) => {
     results,
     components,
     fixPlan,
+    policyResult,
     isDownloading,
     loading,
     error,

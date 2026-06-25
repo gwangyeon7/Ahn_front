@@ -138,6 +138,18 @@ const styles: Record<string, React.CSSProperties> = {
     background: "#ffedd5",
     color: "#9a3412",
   },
+  blockBadge: {
+    background: "#fee2e2",
+    color: "#991b1b",
+  },
+  reviewBadge: {
+    background: "#fef3c7",
+    color: "#92400e",
+  },
+  passBadge: {
+    background: "#dcfce7",
+    color: "#166534",
+  },
   empty: {
     padding: 42,
     color: "#64748b",
@@ -165,6 +177,13 @@ const formatDate = (value?: string) => {
     hour: "2-digit",
     minute: "2-digit",
   });
+};
+
+const getPolicyBadgeStyle = (decision?: string) => {
+  if (decision === "BLOCK") return styles.blockBadge;
+  if (decision === "REVIEW") return styles.reviewBadge;
+  if (decision === "PASS") return styles.passBadge;
+  return styles.severityBadge;
 };
 
 export default function AnalysisHistoryScreen() {
@@ -247,7 +266,7 @@ export default function AnalysisHistoryScreen() {
                 <th style={{ ...styles.th, width: "13%" }}>업로드일</th>
                 <th style={{ ...styles.th, width: "10%" }}>크기</th>
                 <th style={{ ...styles.th, width: "12%" }}>구성요소</th>
-                <th style={{ ...styles.th, width: "24%" }}>취약점 요약</th>
+                <th style={{ ...styles.th, width: "24%" }}>취약점 / 정책</th>
                 <th style={{ ...styles.th, width: "13%" }}>결과</th>
               </tr>
             </thead>
@@ -272,6 +291,16 @@ export default function AnalysisHistoryScreen() {
                       <span style={styles.severityBadge}>
                         Total {item.totalFindings ?? 0}
                       </span>
+                      {item.policyDecisionLabel && (
+                        <span
+                          style={{
+                            ...styles.severityBadge,
+                            ...getPolicyBadgeStyle(item.policyDecision),
+                          }}
+                        >
+                          {item.policyDecisionLabel}
+                        </span>
+                      )}
                     </div>
                   </td>
                   <td style={styles.td}>

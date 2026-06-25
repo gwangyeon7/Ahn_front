@@ -289,6 +289,18 @@ const styles: Record<string, React.CSSProperties> = {
     background: "#ffedd5",
     color: "#9a3412",
   },
+  blockChip: {
+    background: "#fee2e2",
+    color: "#991b1b",
+  },
+  reviewChip: {
+    background: "#fef3c7",
+    color: "#92400e",
+  },
+  passChip: {
+    background: "#dcfce7",
+    color: "#166534",
+  },
   empty: {
     padding: 34,
     color: "#64748b",
@@ -347,6 +359,13 @@ const getRiskLevel = (summary: DashboardSummary) => {
     color: "#15803d",
     copy: "현재 저장된 분석 기준으로 심각한 취약점이 발견되지 않았습니다.",
   };
+};
+
+const getPolicyChipStyle = (decision?: string) => {
+  if (decision === "BLOCK") return styles.blockChip;
+  if (decision === "REVIEW") return styles.reviewChip;
+  if (decision === "PASS") return styles.passChip;
+  return styles.chip;
 };
 
 export default function DashboardScreen() {
@@ -598,8 +617,8 @@ function FileTable({
           <thead>
             <tr>
               <th style={{ ...styles.th, width: "43%" }}>파일</th>
-              <th style={{ ...styles.th, width: "24%" }}>위험도</th>
-              <th style={{ ...styles.th, width: "20%" }}>업로드</th>
+              <th style={{ ...styles.th, width: "30%" }}>위험도 / 정책</th>
+              <th style={{ ...styles.th, width: "14%" }}>업로드</th>
               <th style={{ ...styles.th, width: "13%" }}>결과</th>
             </tr>
           </thead>
@@ -621,6 +640,16 @@ function FileTable({
                       H {file.highCount ?? 0}
                     </span>
                     <span style={styles.chip}>T {file.totalFindings ?? 0}</span>
+                    {file.policyDecisionLabel && (
+                      <span
+                        style={{
+                          ...styles.chip,
+                          ...getPolicyChipStyle(file.policyDecision),
+                        }}
+                      >
+                        {file.policyDecisionLabel}
+                      </span>
+                    )}
                   </div>
                 </td>
                 <td style={styles.td}>{formatDate(file.uploadDate)}</td>

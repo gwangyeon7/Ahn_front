@@ -48,6 +48,9 @@ export type FileHistoryItem = {
   mediumCount?: number;
   lowCount?: number;
   totalFindings?: number;
+  policyDecision?: "BLOCK" | "REVIEW" | "PASS" | string;
+  policyDecisionLabel?: string;
+  policySummary?: string;
 };
 
 export type FileStatus = {
@@ -72,6 +75,26 @@ export type DashboardSummary = {
   lowCount: number;
   latestFiles: FileHistoryItem[];
   riskyFiles: FileHistoryItem[];
+};
+
+export type PolicyRuleResult = {
+  ruleCode: string;
+  level: "BLOCK" | "REVIEW" | "PASS" | string;
+  title: string;
+  message: string;
+};
+
+export type PolicyResult = {
+  fileSeq: number;
+  decision: "BLOCK" | "REVIEW" | "PASS" | string;
+  decisionLabel: string;
+  summary: string;
+  criticalCount: number;
+  highCount: number;
+  mediumCount: number;
+  missingFixCount: number;
+  violations: PolicyRuleResult[];
+  passedRules: PolicyRuleResult[];
 };
 
 export const uploadSbomFile = async (file: File, membSeq: number) => {
@@ -106,6 +129,11 @@ export const getComponents = async (fileSeq: string | number) => {
 
 export const getFixPlan = async (fileSeq: string | number) => {
   const response = await axiosInstance.get(`/files/${fileSeq}/fix-plan`);
+  return response.data;
+};
+
+export const getPolicyResult = async (fileSeq: string | number) => {
+  const response = await axiosInstance.get(`/files/${fileSeq}/policy-result`);
   return response.data;
 };
 

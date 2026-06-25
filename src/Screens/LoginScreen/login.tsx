@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CommonStyle from "../../styles/CommonStyle";
 import { loginApiCall } from "../../services/_private/Login/LoginApi";
 import { useNavigate } from "react-router-dom";
-import { setCurrentUser } from "../../utils/currentUser";
+import { isLoggedIn, setCurrentUser } from "../../utils/currentUser";
 
 export default function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn()) {
+      navigation("/");
+    }
+  }, [navigation]);
+
   const handleLogin = async () => {
     //간단히 loginApicall을 부르기위한
 

@@ -1,0 +1,49 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches:
+      - gwangyeon7
+      - dev
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 코드 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Node.js 설정
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 의존성 설치
+        run: npm ci
+
+      - name: 프론트엔드 빌드
+        run: npm run build
+
+      - name: SSH 키 설정
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/safelink-key.pem
+          chmod 600 ~/.ssh/safelink-key.pem
+          ssh-keyscan -H ${{ secrets.FE_EC2_HOST }} >> ~/.ssh/known_hosts
+
+      - name: EC2 배포
+        run: |
+          chmod +x scripts/deploy-frontend.sh
+          ./scripts/deploy-frontend.sh \
+            "${{ secrets.FE_EC2_HOST }}" \
+            ~/.ssh/safelink-key.pem \
+            "${{ github.run_number }}" \
+            "ubuntu" \
+            "dist"
+
+      - name: SSH 키 정리
+        if: always()
+        run: rm -f ~/.ssh/safelink-key.pem

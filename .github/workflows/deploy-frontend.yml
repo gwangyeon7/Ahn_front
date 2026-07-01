@@ -32,7 +32,6 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/safelink-key.pem
           chmod 600 ~/.ssh/safelink-key.pem
-          ssh-keyscan -H ${{ secrets.FE_EC2_HOST }} >> ~/.ssh/known_hosts
 
       - name: EC2 배포
         run: |

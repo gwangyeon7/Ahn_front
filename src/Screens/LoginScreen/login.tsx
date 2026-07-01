@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CommonStyle from "../../styles/CommonStyle";
 import { loginApiCall } from "../../services/_private/Login/LoginApi";
+import { googleLoginApiCall } from "../../services/_private/Auth/GoogleAuthApi";
 import { useNavigate } from "react-router-dom";
 import { isLoggedIn, setCurrentUser } from "../../utils/currentUser";
 
@@ -14,6 +15,62 @@ export default function Login() {
       navigation("/");
     }
   }, [navigation]);
+
+  // 구글 로그인 콜백: GSI가 credential(ID 토큰)을 주면 백엔드로 전달
+  const handleGoogleCallback = async (response: { credential: string }) => {
+    try {
+      const result = await googleLoginApiCall(response.credential);
+      if (result && result.success === true) {
+        const membSeq = result.data?.membSeq;
+        if (membSeq) {
+          setCurrentUser(membSeq, result.data?.membNm);
+          navigation("/");
+          return;
+        }
+      }
+      alert(result?.message || "구글 로그인에 실패했습니다.");
+    } catch (error) {
+      alert("구글 로그인 중 오류가 발생했습니다.");
+    }
+  };
+
+  // Google Identity Services 스크립트를 동적으로 로드하고 버튼을 렌더링
+  useEffect(() => {
+    const scriptId = "google-identity-services";
+    let script = document.getElementById(scriptId) as HTMLScriptElement | null;
+
+    const renderGoogleButton = () => {
+      const google = (window as any).google;
+      const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+      if (!google || !clientId) return;
+
+      google.accounts.id.initialize({
+        client_id: clientId,
+        callback: handleGoogleCallback,
+      });
+      const container = document.getElementById("googleSignInDiv");
+      if (container) {
+        google.accounts.id.renderButton(container, {
+          theme: "outline",
+          size: "large",
+          width: 320,
+        });
+      }
+    };
+
+    if (script) {
+      renderGoogleButton();
+      return;
+    }
+
+    script = document.createElement("script");
+    script.id = scriptId;
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+    script.onload = renderGoogleButton;
+    document.body.appendChild(script);
+  }, []);
 
   const handleLogin = async () => {
     //간단히 loginApicall을 부르기위한
@@ -101,6 +158,19 @@ export default function Login() {
       fontSize: "14px",
       color: CommonStyle.colors.textGray,
     },
+    divider: {
+      display: "flex",
+      alignItems: "center",
+      gap: "10px",
+      margin: "24px 0",
+      color: CommonStyle.colors.textGray,
+      fontSize: "13px",
+    },
+    dividerLine: {
+      flex: 1,
+      height: "1px",
+      backgroundColor: CommonStyle.colors.divider,
+    },
   };
 
   return (
@@ -151,10 +221,31 @@ export default function Login() {
           </button>
         </div>
 
+        <div style={styles.divider}>
+          <span style={styles.dividerLine} />
+          <span>또는</span>
+          <span style={styles.dividerLine} />
+        </div>
+
+        <div
+          id="googleSignInDiv"
+          style={{ display: "flex", justifyContent: "center" }}
+        />
+
         <div style={styles.footer}>
-          <span style={{ cursor: "pointer" }}>아이디 찾기</span>
+          <span
+            style={{ cursor: "pointer" }}
+            onClick={() => navigation("/find-id")}
+          >
+            아이디 찾기
+          </span>
           <span style={{ color: CommonStyle.colors.divider }}>|</span>
-          <span style={{ cursor: "pointer" }}>비밀번호 재설정</span>
+          <span
+            style={{ cursor: "pointer" }}
+            onClick={() => navigation("/forgot-password")}
+          >
+            비밀번호 재설정
+          </span>
           <span style={{ color: CommonStyle.colors.divider }}>|</span>
           <span
             onClick={() => navigation("/signup")}

@@ -9,6 +9,9 @@ import AnalysisHistoryScreen from "../Screens/AnalysisHistoryScreen";
 import ScanLoadingScreen from "../Screens/ScanLoadingScreen";
 import DashboardScreen from "../Screens/DashboardScreen";
 import SignUp from "../Screens/LoginScreen/signup";
+import ForgotPassword from "../Screens/LoginScreen/ForgotPassword";
+import ResetPassword from "../Screens/LoginScreen/ResetPassword";
+import FindId from "../Screens/LoginScreen/FindId";
 import ProtectedRoute from "./ProtectedRoute";
 
 export default function Router() {
@@ -16,6 +19,9 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/find-id" element={<FindId />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route
           path="/"
           element={

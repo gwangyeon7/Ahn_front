@@ -30,7 +30,7 @@ export default function ScanResultScreen() {
   const handleDownloadPdf = async () => {
     setIsGeneratingPdf(true);
     try {
-      generatePdfReport(fileSeq, results, components);
+      await generatePdfReport(fileSeq, results, components);
     } finally {
       setIsGeneratingPdf(false);
     }

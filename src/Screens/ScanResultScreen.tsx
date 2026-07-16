@@ -1,5 +1,6 @@
-import { useMemo } from "react";
-import { History, Home, RotateCcw } from "lucide-react";
+import { useMemo, useState } from "react";
+import { History, Home, RotateCcw, FileDown } from "lucide-react";
+import { generatePdfReport } from "../utils/generatePdfReport";
 import { useNavigate, useParams } from "react-router-dom";
 import { ComponentTable } from "../components/scan/ComponentTable";
 import { FixPlanPanel } from "../components/scan/FixPlanPanel";
@@ -24,6 +25,16 @@ import {
 export default function ScanResultScreen() {
   const { fileSeq } = useParams();
   const navigate = useNavigate();
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+
+  const handleDownloadPdf = async () => {
+    setIsGeneratingPdf(true);
+    try {
+      generatePdfReport(fileSeq, results, components);
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  };
   const {
     results,
     components,
@@ -96,6 +107,15 @@ export default function ScanResultScreen() {
           >
             <History size={16} />
             히스토리
+          </button>
+          <button
+            type="button"
+            style={styles.button}
+            onClick={handleDownloadPdf}
+            disabled={isGeneratingPdf || loading}
+          >
+            <FileDown size={16} />
+            {isGeneratingPdf ? "생성 중..." : "PDF 리포트"}
           </button>
           <button
             type="button"

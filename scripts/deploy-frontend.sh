@@ -32,8 +32,8 @@ rsync -az --delete \
 ssh $SSH_OPTS "${REMOTE_USER}@${FE_HOST}" "
   set -e
   # 새 릴리스를 현재 위치에 원자적으로 교체
-  rsync -a --delete ~/releases/${BUILD_NUM}/ ~/dist/
-  echo '✅ ~/dist 업데이트 완료'
+  rsync -a --delete ~/releases/${BUILD_NUM}/ ~/Ahn_front/dist/
+  echo '✅ ~/Ahn_front/dist 업데이트 완료'
 "
 
 # 4. 오래된 릴리스 정리 (최신 5개만 보관)

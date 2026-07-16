@@ -4,6 +4,22 @@ import type { ScanResult, SbomComponent } from "../services/_private/SbomApi";
 
 const SEVERITY_ORDER = ["CRITICAL", "HIGH", "MEDIUM", "LOW", "NEGLIGIBLE", "UNKNOWN"];
 
+const NANUM_FONT_URL =
+  "https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/nanumgothic/NanumGothic-Regular.ttf";
+
+async function loadKoreanFont(doc: jsPDF): Promise<void> {
+  const res = await fetch(NANUM_FONT_URL);
+  const buf = await res.arrayBuffer();
+  const bytes = new Uint8Array(buf);
+  let binary = "";
+  for (let i = 0; i < bytes.byteLength; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  const base64 = btoa(binary);
+  doc.addFileToVFS("NanumGothic.ttf", base64);
+  doc.addFont("NanumGothic.ttf", "NanumGothic", "normal");
+}
+
 const severityColor = (severity: string): [number, number, number] => {
   switch (severity?.toUpperCase()) {
     case "CRITICAL": return [220, 38, 38];
@@ -14,14 +30,18 @@ const severityColor = (severity: string): [number, number, number] => {
   }
 };
 
-export const generatePdfReport = (
+export const generatePdfReport = async (
   fileSeq: string | undefined,
   results: ScanResult[],
   components: SbomComponent[],
 ) => {
   const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+
+  await loadKoreanFont(doc);
+
   const pageW = doc.internal.pageSize.getWidth();
-  const now = new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" });
+  const d = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Seoul" }));
+  const now = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
 
   // ── Header ───────────────────────────────────────────────
   doc.setFillColor(15, 23, 42);
@@ -29,19 +49,18 @@ export const generatePdfReport = (
 
   doc.setTextColor(255, 255, 255);
   doc.setFontSize(18);
-  doc.setFont("helvetica", "bold");
-  doc.text("SafeLink SBOM Analysis Report", 14, 13);
+  doc.setFont("NanumGothic");
+  doc.text("SafeLink SBOM 분석 보고서", 14, 13);
 
   doc.setFontSize(9);
-  doc.setFont("helvetica", "normal");
-  doc.text(`File #${fileSeq ?? "-"}   |   Generated: ${now}`, 14, 22);
+  doc.text(`파일 번호: ${fileSeq ?? "-"}   |   생성일시: ${now}`, 14, 22);
 
   // ── Summary Cards ─────────────────────────────────────────
   let y = 38;
   doc.setTextColor(30, 30, 30);
   doc.setFontSize(11);
-  doc.setFont("helvetica", "bold");
-  doc.text("Vulnerability Summary", 14, y);
+  doc.setFont("NanumGothic");
+  doc.text("취약점 요약", 14, y);
   y += 6;
 
   const counts: Record<string, number> = {};
@@ -71,9 +90,9 @@ export const generatePdfReport = (
   // Total / Components
   doc.setTextColor(60, 60, 60);
   doc.setFontSize(9);
-  doc.setFont("helvetica", "normal");
+  doc.setFont("NanumGothic");
   doc.text(
-    `Total Vulnerabilities: ${results.length}   |   Total Components: ${components.length}`,
+    `전체 취약점: ${results.length}건   |   전체 구성요소: ${components.length}개`,
     14,
     y,
   );
@@ -81,9 +100,9 @@ export const generatePdfReport = (
 
   // ── Vulnerability Table ───────────────────────────────────
   doc.setFontSize(11);
-  doc.setFont("helvetica", "bold");
+  doc.setFont("NanumGothic");
   doc.setTextColor(30, 30, 30);
-  doc.text("Vulnerability Details", 14, y);
+  doc.text("취약점 상세", 14, y);
   y += 4;
 
   const sorted = [...results].sort(
@@ -94,7 +113,7 @@ export const generatePdfReport = (
 
   autoTable(doc, {
     startY: y,
-    head: [["CVE ID", "Package", "Version", "Severity", "Fix Version"]],
+    head: [["CVE ID", "패키지명", "버전", "심각도", "수정 버전"]],
     body: sorted.map((r) => [
       r.cveId ?? r.vulnId ?? "-",
       r.pkgName,
@@ -138,14 +157,14 @@ export const generatePdfReport = (
   }
 
   doc.setFontSize(11);
-  doc.setFont("helvetica", "bold");
+  doc.setFont("NanumGothic");
   doc.setTextColor(30, 30, 30);
-  doc.text("Component List", 14, y2);
+  doc.text("구성요소 목록", 14, y2);
   y2 += 4;
 
   autoTable(doc, {
     startY: y2,
-    head: [["Package Name", "Version", "Type", "License"]],
+    head: [["패키지명", "버전", "타입", "라이선스"]],
     body: components.map((c) => [
       c.pkgName,
       c.pkgVersion ?? "-",
@@ -170,7 +189,7 @@ export const generatePdfReport = (
     doc.setFontSize(7);
     doc.setTextColor(150, 150, 150);
     doc.text(
-      `SafeLink Security Report  |  Page ${i} of ${pageCount}`,
+      `SafeLink 보안 분석 보고서  |  ${i} / ${pageCount} 페이지`,
       pageW / 2,
       doc.internal.pageSize.getHeight() - 6,
       { align: "center" },

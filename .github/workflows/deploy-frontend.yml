@@ -26,6 +26,8 @@ jobs:
 
       - name: 프론트엔드 빌드
         run: npm run build
+        env:
+          VITE_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
 
       - name: SSH 키 설정
         run: |

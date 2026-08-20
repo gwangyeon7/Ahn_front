@@ -95,7 +95,7 @@ export default function ScanResultScreen() {
           <button
             type="button"
             style={styles.button}
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/dashboard")}
           >
             <Home size={16} />
             홈

@@ -12,7 +12,7 @@ export default function Login() {
 
   useEffect(() => {
     if (isLoggedIn()) {
-      navigation("/");
+      navigation("/dashboard");
     }
   }, [navigation]);
 
@@ -24,7 +24,7 @@ export default function Login() {
         const membSeq = result.data?.membSeq;
         if (membSeq) {
           setCurrentUser(membSeq, result.data?.membNm);
-          navigation("/");
+          navigation("/dashboard");
           return;
         }
       }
@@ -86,7 +86,7 @@ export default function Login() {
         const membSeq = result.data?.membSeq;
         if (membSeq) {
           setCurrentUser(membSeq, result.data?.membNm);
-          navigation("/");
+          navigation("/dashboard");
           return;
         }
         alert("로그인은 성공했지만 회원 번호를 받지 못했습니다. 백엔드 응답을 확인해주세요.");

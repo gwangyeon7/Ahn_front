@@ -1,5 +1,5 @@
 import { axiosInstance } from "./ApiConfig";
-import { getCurrentMembSeq } from "../../utils/currentUser";
+import { isLoggedIn } from "../../utils/currentUser";
 
 export type ScanResult = {
   resultSeq: number;
@@ -97,10 +97,11 @@ export type PolicyResult = {
   passedRules: PolicyRuleResult[];
 };
 
-export const uploadSbomFile = async (file: File, membSeq: number) => {
+// membSeq 파라미터는 더 이상 서버로 보내지 않는다 (호출부 호환을 위해 시그니처만 유지).
+// 서버가 로그인 세션에서 회원을 식별하므로, 여기서 보낸 값은 무시된다.
+export const uploadSbomFile = async (file: File, _membSeq?: number) => {
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("membSeq", String(membSeq));
 
   try {
     const response = await axiosInstance.post("/upload", formData, {
@@ -145,12 +146,10 @@ export const downloadFixedZip = async (fileSeq: string | number) => {
 };
 
 export const getFileHistory = async () => {
-  const membSeq = getCurrentMembSeq();
-  if (!membSeq) throw new Error("로그인이 필요합니다.");
+  if (!isLoggedIn()) throw new Error("로그인이 필요합니다.");
 
-  const response = await axiosInstance.get("/files", {
-    params: { membSeq },
-  });
+  // membSeq를 쿼리로 보내지 않는다 - 서버가 세션 쿠키로 회원을 식별한다.
+  const response = await axiosInstance.get("/files");
   return response.data;
 };
 
@@ -160,11 +159,8 @@ export const getFileStatus = async (fileSeq: string | number) => {
 };
 
 export const getDashboardSummary = async () => {
-  const membSeq = getCurrentMembSeq();
-  if (!membSeq) throw new Error("로그인이 필요합니다.");
+  if (!isLoggedIn()) throw new Error("로그인이 필요합니다.");
 
-  const response = await axiosInstance.get("/dashboard/summary", {
-    params: { membSeq },
-  });
+  const response = await axiosInstance.get("/dashboard/summary");
   return response.data;
 };
